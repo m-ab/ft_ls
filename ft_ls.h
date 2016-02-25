@@ -59,6 +59,7 @@ typedef struct				s_env
 	char					*tmp;
 	int						nb_path;
 	char					*full_path;
+	char					*coucou;
 }							t_env;
 
 t_env						*create_env(char **path);

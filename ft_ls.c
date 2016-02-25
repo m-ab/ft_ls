@@ -91,7 +91,8 @@ t_info    *create_next_list(char *path, t_env *e, t_info *begin)
 void            add_and_sort(char *path, t_env *e, t_info **begin)
 {
 	t_info		*to_add;
-	*begin = create_list(path, e, begin);
+	if (!(*begin = create_list(path, e, begin)))
+		return ;
 	while ((to_add = create_next_list(path, e, *begin)))
 	{
 		if ((*begin)->dir_data && to_add->dir_data)

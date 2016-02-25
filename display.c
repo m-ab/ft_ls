@@ -98,6 +98,8 @@ void				display_files_l(t_env *env, t_info *begin, int i)
 		{
 			file_l(tmp);
 			ft_putstr(" -> ");
+			readlink(ft_j(tmp->path, tmp->dir_data->d_name), env->coucou, 255);
+			ft_putendl(env->coucou);
 			//ft_putendl(???); // AFFICHER LE FICHIER POINTÉ
 		}
 		else
