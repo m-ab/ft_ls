@@ -6,7 +6,7 @@
 /*   By: maboukra <maboukra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 14:13:56 by gmarguer          #+#    #+#             */
-/*   Updated: 2016/02/25 22:02:48 by maboukra         ###   ########.fr       */
+/*   Updated: 2016/02/25 23:49:37 by maboukra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,19 @@ t_info		*create_list(char *path, t_env *e, t_info **begin)
 	list->next = NULL;
 	list->down = NULL;
 	if (!(list->directory = opendir(list->path)))
+	{
+		ft_putendl(path);
 		return (NULL);
+	}
 	if (!(list->dir_data = readdir(list->directory)))
-			return (NULL);
+		return (NULL);
 	if (lstat(ft_j(path, list->dir_data->d_name), &list->file_stat) == -1)
-		perror(0);
+		error_param(3, 1);
 	while (list->dir_data && !e->a && is_hidden_file(list->dir_data->d_name))
 		list->dir_data = readdir(list->directory);
 	if (list && list->dir_data && e->uppercase_r
-		&& S_ISDIR(list->file_stat.st_mode) && (ft_strcmp(list->dir_data->d_name, ".")
-			&& ft_strcmp(list->dir_data->d_name, "..")))
+		&& S_ISDIR(list->file_stat.st_mode) //&& (ft_strcmp(list->dir_data->d_name, ".")
+			&& ft_strcmp(list->dir_data->d_name, ".."))
 			add_and_sort(ft_j(path, list->dir_data->d_name), e, &list->down);
 	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: maboukra <maboukra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/22 07:02:09 by maboukra          #+#    #+#             */
-/*   Updated: 2016/02/25 22:02:39 by maboukra         ###   ########.fr       */
+/*   Updated: 2016/02/25 23:51:43 by maboukra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void				display_files_l(t_env *env, t_info *begin, int i)
 
 	tmp = begin;
 	tmp2 = NULL;
+	if (!begin)
+		return ;
 	if (ft_strcmp(env->path[i], begin->path))
 		(env->uppercase_r) ? ft_putendl(ft_strjoin(begin->path, ":")) : NULL;
 	while (tmp && tmp->dir_data)
@@ -98,8 +100,8 @@ void				display_files_l(t_env *env, t_info *begin, int i)
 		{
 			file_l(tmp);
 			ft_putstr(" -> ");
-			readlink(ft_j(tmp->path, tmp->dir_data->d_name), env->coucou, 255);
-			ft_putendl(env->coucou);
+			readlink(ft_j(tmp->path, tmp->dir_data->d_name), env->link, 255);
+			ft_putendl(env->link);
 			//ft_putendl(???); // AFFICHER LE FICHIER POINTÉ
 		}
 		else

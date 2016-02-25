@@ -6,7 +6,7 @@
 /*   By: maboukra <maboukra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/25 14:08:41 by gmarguer          #+#    #+#             */
-/*   Updated: 2016/02/25 21:26:56 by maboukra         ###   ########.fr       */
+/*   Updated: 2016/02/25 23:44:50 by maboukra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 void	get_data(t_env *e)
 {
 	int		i;
-
+	t_info *coucou;
 	i = -1;
 	if (!(e->begin = (t_info**)malloc(sizeof(t_info*) * e->nb_path)))
 		error_param(2, 1);
@@ -40,6 +40,12 @@ void	get_data(t_env *e)
 	i = -1;
 	while (e->path[++i])
 	{
+		// if (!(coucou->directory = opendir(e->path[i])))
+		// 	perror(0);
+		// if (!(coucou->dir_data = readdir(coucou->directory)))
+		// 	perror(0);
+		// if (!(closedir(coucou->directory)))
+		// 	perror(0);
 		add_and_sort(e->path[i], e, &e->begin[i]);
 		// if (nb_path > 1)
 		// 	display_path(env);
@@ -49,7 +55,7 @@ void	get_data(t_env *e)
 		// else 
 		// display_files_l(env, *env->begin);
 		// free_list(env);
-		if (closedir(e->begin[i]->directory) == -1)
+		if (e->begin[i] && closedir(e->begin[i]->directory) == -1)
 			perror(0);
 	}
 }

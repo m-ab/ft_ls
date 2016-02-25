@@ -6,7 +6,7 @@
 /*   By: maboukra <maboukra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 22:01:21 by maboukra          #+#    #+#             */
-/*   Updated: 2016/02/25 21:56:42 by maboukra         ###   ########.fr       */
+/*   Updated: 2016/02/25 23:51:51 by maboukra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct				s_env
 	char					*tmp;
 	int						nb_path;
 	char					*full_path;
-	char					*coucou;
+	char					*link;
 }							t_env;
 
 t_env						*create_env(char **path);
